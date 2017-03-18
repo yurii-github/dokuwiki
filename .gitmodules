@@ -1,0 +1,3 @@
+[submodule "lib/plugins/yk"]
+	path = lib/plugins/yk
+	url = https://github.com/yurii-github/dokuwiki-plugin-yktools.git
