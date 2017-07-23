@@ -28,8 +28,6 @@ class Mailer {
     protected $partid    = '';
     protected $sendparam = null;
 
-    /** @var EmailAddressValidator */
-    protected $validator = null;
     protected $allowhtml = true;
 
     protected $replacements = array('text'=> array(), 'html' => array());
@@ -333,9 +331,6 @@ class Mailer {
      * @return false|string  the prepared header (can contain multiple lines)
      */
     public function cleanAddress($addresses) {
-        // No named recipients for To: in Windows (see FS#652)
-        $names = (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ? false : true;
-
         $headers = '';
         if(!is_array($addresses)){
             $addresses = explode(',', $addresses);
@@ -363,17 +358,13 @@ class Mailer {
                 continue;
             }
 
-            if(is_null($this->validator)) {
-                $this->validator                      = new EmailAddressValidator();
-                $this->validator->allowLocalAddresses = true;
-            }
-            if(!$this->validator->check_email_address($addr)) {
+            if(!mail_isvalid($addr)) {
                 msg(htmlspecialchars("E-Mail address <$addr> is not valid"), -1);
                 continue;
             }
 
             // text was given
-            if(!empty($text) && $names) {
+            if(!empty($text) && !isWindows()) { // No named recipients for To: in Windows (see FS#652)
                 // add address quotes
                 $addr = "<$addr>";
 

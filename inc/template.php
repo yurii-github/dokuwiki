@@ -366,7 +366,7 @@ function tpl_metaheaders($alt = true) {
     if(($ACT == 'show' || $ACT == 'export_xhtml') && !$REV) {
         if($INFO['exists']) {
             //delay indexing:
-            if((time() - $INFO['lastmod']) >= $conf['indexdelay']) {
+            if(!isHiddenPage($ID) &&  (time() - $INFO['lastmod']) >= $conf['indexdelay']) {
                 $head['meta'][] = array('name'=> 'robots', 'content'=> 'index,follow');
             } else {
                 $head['meta'][] = array('name'=> 'robots', 'content'=> 'noindex,nofollow');
@@ -449,6 +449,7 @@ function _tpl_metaheaders_action($data) {
             echo "<!--[if gte IE 9]><!-->\n"; // no scripts for old IE
         }
         foreach($inst as $attr) {
+            if ( empty($attr) ) { continue; }
             echo '<', $tag, ' ', buildAttributes($attr);
             if(isset($attr['_data']) || $tag == 'script') {
                 if($tag == 'script' && $attr['_data'])
@@ -1560,6 +1561,9 @@ function tpl_mediaFileList() {
  * list of file revisions
  *
  * @author Kate Arzamastseva <pshns@ukr.net>
+ *
+ * @param string $image
+ * @param boolean $rev
  */
 function tpl_mediaFileDetails($image, $rev) {
     global $conf, $DEL, $lang;

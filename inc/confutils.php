@@ -202,6 +202,11 @@ function getSchemes() {
  * @author Harry Fuecks <hfuecks@gmail.com>
  * @author Andreas Gohr <andi@splitbrain.org>
  * @author Gina Haeussge <gina@foosel.net>
+ *
+ * @param array $lines
+ * @param bool $lower
+ *
+ * @return array
  */
 function linesToHash($lines, $lower=false) {
     $conf = array();
@@ -235,6 +240,11 @@ function linesToHash($lines, $lower=false) {
  * @author Harry Fuecks <hfuecks@gmail.com>
  * @author Andreas Gohr <andi@splitbrain.org>
  * @author Gina Haeussge <gina@foosel.net>
+ *
+ * @param string $file
+ * @param bool $lower
+ *
+ * @return array
  */
 function confToHash($file,$lower=false) {
     $conf = array();
