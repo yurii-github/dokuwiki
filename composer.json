@@ -18,5 +18,8 @@
         "squizlabs/php_codesniffer": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
         "phpunit/phpunit": "Allows automated tests to be run without system-wide install."
     },
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require-dev": {
+        "mikey179/vfsStream": "^1.6"
+    }
 }

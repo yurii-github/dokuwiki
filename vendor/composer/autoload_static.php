@@ -34,6 +34,13 @@ class ComposerStaticInita19a915ee98347a0c787119619d2ff9b
     );
 
     public static $prefixesPsr0 = array (
+        'o' => 
+        array (
+            'org\\bovigo\\vfs\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/mikey179/vfsStream/src/main/php',
+            ),
+        ),
         'S' => 
         array (
             'SimplePie' => 
