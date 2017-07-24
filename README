@@ -8,3 +8,36 @@ DokuWiki - 2004-2017 (c) Andreas Gohr <andi@splitbrain.org>
                          and the DokuWiki Community
 See COPYING and file headers for license info
 
+
+--
+clear branches
+
+git push origin --delete blank
+git push origin --delete em_fix
+git push origin --delete eventrenderer
+git push origin --delete font
+git push origin --delete form2
+git push origin --delete hhvm
+git push origin --delete fs2851
+git push origin --delete mail
+git push origin --delete scrutinizer-patch-1
+git push origin --delete phpunit-fix
+git push origin --delete old-stable
+git push origin --delete tokfix
+git push origin --delete travis
+git push origin --delete versionfixtool
+git push origin --delete tpl_action_get2
+git push origin --delete 3waymerge
+git push origin --delete CRLFmail
+git push origin --delete duchon-acl_list_xmlrpc
+git push origin --delete lessnew
+git push origin --delete localdraft
+git push origin --delete mail_headers
+git push origin --delete mediarefactor
+git push origin --delete retrytests
+git push origin --delete extensionevent
+git push origin --delete event_handler_sequencing
+git push origin --delete large-screens
+git push origin --delete pagetools
+git push origin --delete php7comptib
+git push origin --delete juery3
