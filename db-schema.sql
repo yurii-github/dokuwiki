@@ -23,3 +23,15 @@ CREATE TABLE `user_member` (
   PRIMARY KEY (`uid`,`gid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+ALTER TABLE `user_member`
+  ADD CONSTRAINT `FK_member_user`
+FOREIGN KEY (`uid`)
+REFERENCES `user` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_member_group`
+FOREIGN KEY (`gid`)
+REFERENCES `user_group` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
