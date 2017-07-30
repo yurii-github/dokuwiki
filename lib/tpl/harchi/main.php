@@ -21,8 +21,9 @@ $showSidebar = $hasSidebar && ($ACT=='show');
     <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
     <?php tpl_metaheaders() ?>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <?php echo tpl_favicon(array('favicon', 'mobile')) ?>
+    <link rel="icon" type="image/png" href="<?= tpl_getMediaFile(['assets/mortar.png'])?>">
     <?php tpl_includeFile('meta.html') ?>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
@@ -50,8 +51,6 @@ $showSidebar = $hasSidebar && ($ACT=='show');
             <div id="dokuwiki__content"><div class="pad group">
                 <?php html_msgarea() ?>
 
-                <div class="pageId"><span><?php echo hsc($ID) ?></span></div>
-
                 <div class="page group">
                     <?php tpl_flush() ?>
                     <?php tpl_includeFile('pageheader.html') ?>
@@ -61,7 +60,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                     <?php tpl_includeFile('pagefooter.html') ?>
                 </div>
 
-                <div class="docInfo"><?php tpl_pageinfo() ?></div>
+                <div class="docInfo"><?php //tpl_pageinfo() ?></div>
 
                 <?php tpl_flush() ?>
             </div></div><!-- /content -->

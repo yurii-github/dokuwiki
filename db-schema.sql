@@ -1,10 +1,10 @@
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `full_name` varchar(255)  NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL COMMENT 'registered users',
-  `password` varchar(255) NOT NULL,
+  `full_name` varchar(191)  NOT NULL,
+  `username` varchar(191) NOT NULL,
+  `email` varchar(191) NOT NULL COMMENT 'registered users',
+  `password` char(40) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
