@@ -6,6 +6,7 @@
  */
 $plugins['acl']               = 1;
 //$plugins['authplain']         = 1;
+$plugins['authpdo']         = 1;
 $plugins['extension']         = 1;
 $plugins['config']            = 1;
 $plugins['usermanager']       = 1;

@@ -38,6 +38,7 @@
 !/data/pages/wiki/welcome.txt
 /lib/tpl/*
 !/lib/tpl/dokuwiki
+!/lib/tpl/harchi
 !/lib/tpl/index.php
 /lib/plugins/*
 !/lib/plugins/acl

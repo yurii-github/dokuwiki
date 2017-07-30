@@ -1,3 +1,6 @@
 [submodule "lib/plugins/yk"]
 	path = lib/plugins/yk
 	url = https://github.com/yurii-github/dokuwiki-plugin-yktools.git
+[submodule "lib/tpl/bootstrap3"]
+	path = lib/tpl/bootstrap3
+	url = https://github.com/yurii-github/dokuwiki-template-bootstrap3.git
