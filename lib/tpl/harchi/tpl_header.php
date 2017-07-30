@@ -13,6 +13,10 @@ if (!defined('DOKU_INC')) die();
     <?php tpl_includeFile('header.html') ?>
 
     <div class="headings group">
+        <?php
+        $translation = plugin_load('helper','translation');
+        if ($translation) echo $translation->showTranslations();
+        ?>
         <ul class="a11y skip">
             <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content']; ?></a></li>
         </ul>

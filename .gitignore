@@ -63,6 +63,7 @@
 !/lib/plugins/index.html
 !/lib/plugins/remote.php
 !/lib/plugins/syntax.php
+!/lib/plugins/translation
 lib/images/*/local/*
 
 # composer default ignores
