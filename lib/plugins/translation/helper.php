@@ -339,7 +339,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         $flag = false;
         $style = '';
         if(isset($this->opts['flag'])) {
-            $flag = DOKU_BASE . 'lib/plugins/translation/flags/' . hsc($lang) . '.gif';
+            $flag = DOKU_BASE . 'lib/plugins/translation/flags/' . hsc($lang) . '.png';
             $style = ' style="background-image: url(\'' . $flag . '\')"';
             $class .= ' flag';
         }
@@ -365,7 +365,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         } else {
             $out .= "<li><div class='$divClass'>";
             $out .= '<a href="' . wl($link) . '" class="' . $class . '" title="' . hsc($localname) . '">';
-            if($flag) $out .= '<img src="' . $flag . '" alt="' . hsc($lang) . '" height="11" />';
+            if($flag) $out .= '<img width="20px" height="10px" src="' . $flag . '" alt="' . hsc($lang) . '" height="11" />';
             $out .= $display;
             $out .= '</a>';
             $out .= '</div></li>';

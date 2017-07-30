@@ -5,6 +5,11 @@
 
 // must be run from within DokuWiki
 if (!defined('DOKU_INC')) die();
+
+/** @var helper_plugin_translation $translation */
+$translation = plugin_load('helper','translation');
+
+
 ?>
 
 <!-- ********** HEADER ********** -->
@@ -13,10 +18,6 @@ if (!defined('DOKU_INC')) die();
     <?php tpl_includeFile('header.html') ?>
 
     <div class="headings group">
-        <?php
-        $translation = plugin_load('helper','translation');
-        if ($translation) echo $translation->showTranslations();
-        ?>
         <ul class="a11y skip">
             <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content']; ?></a></li>
         </ul>
@@ -56,6 +57,9 @@ if (!defined('DOKU_INC')) die();
         <div id="dokuwiki__sitetools">
             <h3 class="a11y"><?php echo $lang['site_tools']; ?></h3>
             <?php tpl_searchform(); ?>
+
+
+            <!--
             <div class="mobileTools">
                 <?php tpl_actiondropdown($lang['tools']); ?>
             </div>
@@ -67,9 +71,9 @@ if (!defined('DOKU_INC')) die();
                         tpl_action('index', true, 'li', true)
                     ));
                 ?>
-            </ul>
+            </ul>-->
         </div>
-
+        <?= $translation->showTranslations(); ?>
     </div>
 
     <!-- BREADCRUMBS -->
