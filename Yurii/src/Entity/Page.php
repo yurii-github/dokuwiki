@@ -51,7 +51,7 @@ class Page
     /**
      * Get base page
      *
-     * @return Page
+     * @return Page|null
      */
     public function getBasePage()
     {
