@@ -21,9 +21,14 @@ class ComposerStaticInita19a915ee98347a0c787119619d2ff9b
         array (
             'phpseclib\\' => 10,
         ),
+        'Y' => 
+        array (
+            'Yurii\\' => 6,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\Console\\' => 26,
         ),
@@ -50,9 +55,17 @@ class ComposerStaticInita19a915ee98347a0c787119619d2ff9b
         array (
             0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
         ),
+        'Yurii\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Yurii/src',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Component\\Yaml\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
         'Symfony\\Component\\Debug\\' => 
         array (

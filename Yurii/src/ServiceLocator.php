@@ -1,0 +1,36 @@
+<?php
+namespace Yurii;
+
+use Doctrine\Common\Cache\ApcuCache;
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
+use Symfony\Component\Yaml\Yaml;
+
+class ServiceLocator {
+
+    protected static $servicesDefinition = [
+      'doctrine' => ''
+    ];
+
+    protected static $services;
+
+    public static function get($serviceId) {
+        if (empty(self::$services[$serviceId])) {
+
+
+            if ($serviceId == 'doctrine') {
+                $isDevMode = true;
+
+                $config = Yaml::parse(file_get_contents(dirname(__DIR__).'/config/config.yaml'));
+
+                $entityManager = EntityManager::create($config['doctrine'],
+                    Setup::createAnnotationMetadataConfiguration([__DIR__], $isDevMode, null, new ApcuCache(), false)
+                    );
+
+                self::$services[$serviceId] = $entityManager;
+            }
+        }
+
+        return self::$services[$serviceId];
+    }
+}
