@@ -26,7 +26,7 @@ $conf['baseurl']     = '';                //URL to server including protocol - b
 $conf['cookiedir']   = '';                //path to use in cookies - blank for basedir
 $conf['dmode']       = 0755;              //set directory creation mode
 $conf['fmode']       = 0644;              //set file creation mode
-$conf['allowdebug']  = 0;                 //allow debug output, enable if needed 0|1
+$conf['allowdebug']  = 1;                 //allow debug output, enable if needed 0|1
 
 /* Display Settings */
 $conf['recent']      = 20;                //how many entries to show in recent
