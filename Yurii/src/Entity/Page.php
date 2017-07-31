@@ -18,7 +18,7 @@ class Page
     private $id;
 
     /**
-     * @ORM\Column(name="page_id", type="string")
+     * @ORM\Column(name="page_id", type="string", unique=true)
      **/
     private $pageId;
 
@@ -28,10 +28,25 @@ class Page
     private $lang;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Page")
+     * @ORM\ManyToOne(targetEntity="Page", inversedBy="pages", cascade={"all"})
      * @ORM\JoinColumn(name="base_id", referencedColumnName="id")
      */
     private $basePage;
+
+    /**
+     * @var Page[]
+     * @ORM\OneToMany(targetEntity="Page", mappedBy="id")
+     */
+    private $pages;
+
+    /**
+     * @return Page[]
+     */
+    public function getPages() {
+        return $this->pages;
+    }
+
+
 
     /**
      * Get base page

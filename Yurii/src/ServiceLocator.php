@@ -23,8 +23,10 @@ class ServiceLocator {
 
                 $config = Yaml::parse(file_get_contents(dirname(__DIR__).'/config/config.yaml'));
 
+                $proxyDir = dirname(__DIR__).'/data';
+
                 $entityManager = EntityManager::create($config['doctrine'],
-                    Setup::createAnnotationMetadataConfiguration([__DIR__], $isDevMode, null, new ApcuCache(), false)
+                    Setup::createAnnotationMetadataConfiguration([__DIR__], $isDevMode, $proxyDir, new ApcuCache(), false)
                     );
 
                 self::$services[$serviceId] = $entityManager;

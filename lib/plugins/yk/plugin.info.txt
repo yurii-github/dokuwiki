@@ -1,0 +1,7 @@
+base   yk
+author Yurii K.
+email  yurii-github@users.noreply.github.com
+date   2017-03-18 2017-07-31
+name   Yurii Tools
+desc   Backups, remove, delete ...etc
+url    https://github.com/yurii-github/dokuwiki-plugin-yktools
