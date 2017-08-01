@@ -481,6 +481,10 @@ function wl($id = '', $urlParameters = '', $absolute = false, $separator = '&amp
     if($id === '' && !$conf['hidestart']) {
         $id = $conf['start'];
     }
+    //TODO: make configurable
+    if ($id === '' && in_array($conf['start'],['en',ru])) { // show subpath for other languages
+        $id = $conf['start'];
+    }
     $id = idfilter($id);
     if($absolute) {
         $xlink = DOKU_URL;
