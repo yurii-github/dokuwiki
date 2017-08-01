@@ -44,19 +44,7 @@ lib/images/*/local/*
 
 # composer default ignores
 composer.phar
-vendor/*/*/phpunit.xml*
-vendor/*/*/.travis.yml
-vendor/*/*/tests/*
-vendor/*/*/test/*
-vendor/*/*/doc/*
-vendor/*/*/docs/*
-vendor/*/*/contrib/*
-vendor/splitbrain/php-archive/apigen.neon
-vendor/splitbrain/php-archive/generate-api.sh
-vendor/paragonie/random_compat/build-phar.sh
-vendor/paragonie/random_compat/dist/*
-vendor/paragonie/random_compat/other/*
-vendor/simplepie/simplepie/db.sql
+/vendor
 
 /Yurii/var
 /Yurii/config/config.yaml
