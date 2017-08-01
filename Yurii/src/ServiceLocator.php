@@ -29,6 +29,8 @@ class ServiceLocator {
                     Setup::createAnnotationMetadataConfiguration([__DIR__], $isDevMode, $proxyDir, new ApcuCache(), false)
                     );
 
+                $entityManager->getConnection()->getSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
+
                 self::$services[$serviceId] = $entityManager;
             }
         }

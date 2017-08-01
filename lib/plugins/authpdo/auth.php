@@ -38,19 +38,10 @@ class auth_plugin_authpdo extends DokuWiki_Auth_Plugin {
             return;
         }
 
-        try {
-            $this->pdo = new PDO(
-                $this->getConf('dsn'),
-                $this->getConf('user'),
-                conf_decodeString($this->getConf('pass')),
-                array(
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // always fetch as array
-                    PDO::ATTR_EMULATE_PREPARES => true, // emulating prepares allows us to reuse param names
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // we want exceptions, not error codes
-                )
-            );
-        } catch(PDOException $e) {
-            $this->_debug($e);
+        if ($doctrine = \Yurii\ServiceLocator::get('doctrine')) {
+            /** @var \Doctrine\ORM\EntityManager $doctrine */
+            $this->pdo = $doctrine->getConnection()->getWrappedConnection();
+        } else {
             msg($this->getLang('connectfail'), -1);
             $this->success = false;
             return;
