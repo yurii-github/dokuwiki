@@ -33,6 +33,8 @@ class action_plugin_yk_i18n extends \DokuWiki_Action_Plugin
             $_SESSION[DOKU_COOKIE]['yk_1i8n_lang'] = $lang;
         }
 
+        // override default page depending on language
+        $GLOBALS['conf']['start'] = $lang;
     }
 
     /**

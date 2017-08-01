@@ -6,10 +6,6 @@
 // must be run from within DokuWiki
 if (!defined('DOKU_INC')) die();
 
-/** @var helper_plugin_translation $translation */
-$translation = plugin_load('helper','translation');
-
-
 ?>
 
 <!-- ********** HEADER ********** -->
@@ -73,7 +69,6 @@ $translation = plugin_load('helper','translation');
                 ?>
             </ul>-->
         </div>
-        <?= $translation->showTranslations(); ?>
     </div>
 
     <!-- BREADCRUMBS -->
