@@ -1,0 +1,6 @@
+
+doctrine:
+  driver: 'pdo_mysql'
+  user: 'USER'
+  password: 'PASS'
+  dbname: 'DB'
