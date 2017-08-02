@@ -10,7 +10,6 @@
 /conf/plugin_lang/*
 /conf/plugins.local.*
 /conf/tpl/*
-.htaccess
 *.swp
 *.bak
 *.old
@@ -45,6 +44,7 @@ lib/images/*/local/*
 # composer default ignores
 composer.phar
 /vendor
+!/vendor/.htaccess
 
 /Yurii/var
 /Yurii/config/config.yaml
