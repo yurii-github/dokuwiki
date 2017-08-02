@@ -26,11 +26,9 @@ $showSidebar = $hasSidebar && ($ACT=='show');
 </head>
 
 <body>
-    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site <?php echo tpl_classes(); ?> <?php
-        echo ($showSidebar) ? 'showSidebar' : ''; ?> <?php echo ($hasSidebar) ? 'hasSidebar' : ''; ?>">
-
-        <?php include('tpl_header.php') ?>
-
+    <div id="dokuwiki__site">
+        <div id="dokuwiki__top" class="site <?php echo tpl_classes(); ?> <?php echo ($showSidebar) ? 'showSidebar' : ''; ?> <?php echo ($hasSidebar) ? 'hasSidebar' : ''; ?>">
+            <?php include('tpl_header.php') ?>
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- Page TOP -->
             <ins class="adsbygoogle"
@@ -42,98 +40,100 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
 
-        <div class="wrapper group">
+            <div class="wrapper group">
+                <?php if($showSidebar): ?>
+                    <!-- ********** ASIDE ********** -->
+                    <div id="dokuwiki__aside"><div class="pad aside include group">
+                        <h3 class="toggle"><?php echo $lang['sidebar'] ?></h3>
+                        <div class="content"><div class="group">
+                            <?php tpl_flush() ?>
+                            <?php tpl_includeFile('sidebarheader.html') ?>
+                            <?php tpl_include_page($conf['sidebar'], true, true) ?>
+                            <?php tpl_includeFile('sidebarfooter.html') ?>
+                        </div></div>
+                    </div></div><!-- /aside -->
+                <?php endif; ?>
 
-            <?php if($showSidebar): ?>
-                <!-- ********** ASIDE ********** -->
-                <div id="dokuwiki__aside"><div class="pad aside include group">
-                    <h3 class="toggle"><?php echo $lang['sidebar'] ?></h3>
-                    <div class="content"><div class="group">
+                <!-- ********** CONTENT ********** -->
+                <div id="dokuwiki__content">
+                    <div class="pad group">
+                        <?php html_msgarea() ?>
+                        <div class="page group">
+                            <?php tpl_flush() ?>
+                            <!-- wikipage start -->
+                            <?php tpl_content() ?>
+                            <!-- wikipage stop -->
+                        </div>
+                        <div class="docInfo"><?php tpl_pageinfo() ?></div>
                         <?php tpl_flush() ?>
-                        <?php tpl_includeFile('sidebarheader.html') ?>
-                        <?php tpl_include_page($conf['sidebar'], true, true) ?>
-                        <?php tpl_includeFile('sidebarfooter.html') ?>
-                    </div></div>
-                </div></div><!-- /aside -->
-            <?php endif; ?>
 
-            <!-- ********** CONTENT ********** -->
-            <div id="dokuwiki__content"><div class="pad group">
-                <?php html_msgarea() ?>
+                        <?php if ($ACT=='show'): ?>
+                            <div id="hypercomments_widget"></div>
+                            <script type="text/javascript">
+                                _hcwp = window._hcwp || [];
+                                _hcwp.push({widget:"Stream", widget_id: 91700});
+                                (function() {
+                                    if("HC_LOAD_INIT" in window)return;
+                                    HC_LOAD_INIT = true;
+                                    var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+                                    hcc.src = "//w.hypercomments.com/widget/hc/91700/<?= $conf['lang'];?>/widget.js";
+                                    var s = document.getElementsByTagName("script")[0];
+                                    s.parentNode.insertBefore(hcc, s.nextSibling);
+                                })();
+                            </script>
+                        <?php endif; ?>
 
-                <div class="page group">
-                    <?php tpl_flush() ?>
-                    <?php tpl_includeFile('pageheader.html') ?>
-                    <!-- wikipage start -->
-                    <?php tpl_content() ?>
-                    <!-- wikipage stop -->
-                    <?php tpl_includeFile('pagefooter.html') ?>
+                    </div>
+                </div><!-- /content -->
+
+                <hr class="a11y" />
+
+                <!-- PAGE ACTIONS -->
+                <div id="dokuwiki__pagetools">
+                    <h3 class="a11y"><?php echo $lang['page_tools']; ?></h3>
+                    <div class="tools">
+                        <ul>
+                            <?php
+
+                            $admin = [];
+                                $GLOBALS['USERINFO']['uid'] == 1 ?
+                                    $admin = [
+                                        'edit'  => tpl_action('edit', true, 'li', true, '<span>', '</span>'),
+                                        'revert' => tpl_action('revert', true, 'li', true, '<span>', '</span>'),
+                                        'revisions' => tpl_action('revisions', true, 'li', true, '<span>', '</span>'),
+                                        'subscribe' => tpl_action('subscribe', true, 'li', true, '<span>', '</span>'),
+                                    ] : [];
+
+                                $data = array(
+                                    'view'  => 'main',
+                                    'items' =>  $admin + array(
+                                        'backlink'  => tpl_action('backlink',  true, 'li', true, '<span>', '</span>'),
+                                        'top' => tpl_action('top',  true, 'li', true, '<span>', '</span>')
+                                    )
+                                );
+
+                                // the page tools can be amended through a custom plugin hook
+                                $evt = new Doku_Event('TEMPLATE_PAGETOOLS_DISPLAY', $data);
+                                if($evt->advise_before()){
+                                    foreach($evt->data['items'] as $k => $html) echo $html;
+                                }
+                                $evt->advise_after();
+                                unset($data);
+                                unset($evt);
+                            ?>
+                        </ul>
+                    </div>
                 </div>
-
-                <div class="docInfo"><?php //tpl_pageinfo() ?></div>
-
-                <?php tpl_flush() ?>
-            </div></div><!-- /content -->
-
-            <hr class="a11y" />
-
-            <!-- PAGE ACTIONS -->
-            <div id="dokuwiki__pagetools">
-                <h3 class="a11y"><?php echo $lang['page_tools']; ?></h3>
-                <div class="tools">
-                    <ul>
-                        <?php
-
-                        $admin = [];
-                            $GLOBALS['USERINFO']['uid'] == 1 ?
-                                $admin = [
-                                    'edit'  => tpl_action('edit', true, 'li', true, '<span>', '</span>'),
-                                    'revert' => tpl_action('revert', true, 'li', true, '<span>', '</span>'),
-                                    'revisions' => tpl_action('revisions', true, 'li', true, '<span>', '</span>'),
-                                    'subscribe' => tpl_action('subscribe', true, 'li', true, '<span>', '</span>'),
-                                ] : [];
-
-                            $data = array(
-                                'view'  => 'main',
-                                'items' =>  $admin + array(
-                                    'backlink'  => tpl_action('backlink',  true, 'li', true, '<span>', '</span>'),
-                                    'top' => tpl_action('top',  true, 'li', true, '<span>', '</span>')
-                                )
-                            );
-
-                            // the page tools can be amended through a custom plugin hook
-                            $evt = new Doku_Event('TEMPLATE_PAGETOOLS_DISPLAY', $data);
-                            if($evt->advise_before()){
-                                foreach($evt->data['items'] as $k => $html) echo $html;
-                            }
-                            $evt->advise_after();
-                            unset($data);
-                            unset($evt);
-                        ?>
-                    </ul>
+            </div><!-- /wrapper -->
+            <hr>
+            <!-- ********** FOOTER ********** -->
+            <div id="dokuwiki__footer">
+                <div class="pad">
+                    <?php  tpl_link(wl('ліцензії'),'<img width="15" height="15" src="'.tpl_getMediaFile(['assets/zero.svg']).'"  alt="ліцензії" /> Ліцензії'); ?>
+                     |
+                    <a target="_blank" href="https://nic.ua/ru/signup/jbduuyeq">Хостинг від NIC.UA<sup>-10%</sup></a>
                 </div>
             </div>
-        </div><!-- /wrapper -->
-
-        <?php if ($ACT=='show'): ?>
-        <div id="hypercomments_widget"></div>
-        <script type="text/javascript">
-            _hcwp = window._hcwp || [];
-            _hcwp.push({widget:"Stream", widget_id: 91700});
-            (function() {
-                if("HC_LOAD_INIT" in window)return;
-                HC_LOAD_INIT = true;
-                var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-                hcc.src = "//w.hypercomments.com/widget/hc/91700/<?= $conf['lang'];?>/widget.js";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hcc, s.nextSibling);
-            })();
-        </script>
-        <?php endif; ?>
-
-        <!-- ********** FOOTER ********** -->
-        <div id="dokuwiki__footer">
-            <div class="pad"></div></div>
         </div>
     </div><!-- /site -->
 
