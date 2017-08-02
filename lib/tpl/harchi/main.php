@@ -139,8 +139,12 @@ $showSidebar = $hasSidebar && ($ACT=='show');
             })();
         </script>
         <?php endif; ?>
-        <?php include('tpl_footer.php') ?>
-    </div></div><!-- /site -->
+
+        <!-- ********** FOOTER ********** -->
+        <div id="dokuwiki__footer">
+            <div class="pad"></div></div>
+        </div>
+    </div><!-- /site -->
 
     <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
     <div id="screen__mode" class="no"></div><?php /* helper to detect CSS media query in script.js */ ?>
