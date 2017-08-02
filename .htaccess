@@ -2,7 +2,7 @@
 
 ## You should disable Indexes and MultiViews either here or in the
 ## global config. Symlinks maybe needed for URL rewriting.
-#Options -Indexes -MultiViews +FollowSymLinks
+Options -Indexes -MultiViews +FollowSymLinks
 
 ## make sure nobody gets the htaccess, README, COPYING or VERSION files
 <Files ~ "^([\._]ht|README$|VERSION$|COPYING$)">
@@ -23,9 +23,6 @@
 ## Uncomment these rules if you want to have nice URLs using
 ## $conf['userewrite'] = 1 - not needed for rewrite mode 2
 RewriteEngine on
-#RewriteCond %{HTTPS} off
-#RewriteRule (.*) https://%{HTTP_HOST}:443%{REQUEST_URI}
-
 #
 RewriteRule ^_media/(.*)              lib/exe/fetch.php?media=$1  [QSA,L]
 RewriteRule ^_detail/(.*)             lib/exe/detail.php?media=$1  [QSA,L]
@@ -46,3 +43,6 @@ RewriteRule ^index.php$               doku.php
 ## rules if your server setup allows HTTPS.
 #RewriteCond %{HTTPS} !=on
 #RewriteRule ^lib/exe/xmlrpc.php$      https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301]
+
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}:443%{REQUEST_URI} [L,R=301]

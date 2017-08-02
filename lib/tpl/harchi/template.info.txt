@@ -1,7 +1,7 @@
-base     dokuwiki
-author   Anika Henke
-email    anika@selfthinker.org
-date     2015-07-26
+base     harchi
+author   ASD
+email    asd@asd.asd
+date     2017-08-02
 name     DokuWiki Template
-desc     DokuWiki's default template since 2012
-url      http://www.dokuwiki.org/template:dokuwiki
+desc     template desc
+url      http://asd.asd.asd
