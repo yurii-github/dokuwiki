@@ -4,6 +4,14 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
 $hasSidebar = page_findnearest($conf['sidebar']);
 $showSidebar = $hasSidebar && ($ACT=='show');
+
+// in-place replacement for tpl_pageinfo()
+$editDate = function () use (&$INFO, &$lang) {
+    if($INFO['exists']) {
+        return $lang['lastmod'] .' '. dformat($INFO['lastmod'], '%d/%m/%Y');
+    }
+}
+
 ?><!DOCTYPE html>
 <html lang="<?php echo $conf['lang'] ?>" dir="<?php echo $lang['direction'] ?>" class="no-js">
 <head>
@@ -47,9 +55,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                         <h3 class="toggle"><?php echo $lang['sidebar'] ?></h3>
                         <div class="content"><div class="group">
                             <?php tpl_flush() ?>
-                            <?php tpl_includeFile('sidebarheader.html') ?>
                             <?php tpl_include_page($conf['sidebar'], true, true) ?>
-                            <?php tpl_includeFile('sidebarfooter.html') ?>
                         </div></div>
                     </div></div><!-- /aside -->
                 <?php endif; ?>
@@ -64,7 +70,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                             <?php tpl_content() ?>
                             <!-- wikipage stop -->
                         </div>
-                        <div class="docInfo"><?php tpl_pageinfo() ?></div>
+                        <div class="docInfo"><?= $editDate(); ?></div>
                         <?php tpl_flush() ?>
 
                         <?php if ($ACT=='show'): ?>
@@ -94,7 +100,6 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                     <div class="tools">
                         <ul>
                             <?php
-
                             $admin = [];
                                 $GLOBALS['USERINFO']['uid'] == 1 ?
                                     $admin = [
