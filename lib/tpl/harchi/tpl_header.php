@@ -9,7 +9,7 @@ if (!defined('DOKU_INC')) die();
 ?>
 
 <!-- ********** HEADER ********** -->
-<div id="dokuwiki__header"><div class="pad group">
+<div id="dokuwiki__header" style="padding-bottom: 0.5em;"><div class="pad group">
 
     <?php tpl_includeFile('header.html') ?>
 
