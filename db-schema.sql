@@ -37,9 +37,3 @@ REFERENCES `user_group` (`id`)
 
 
 
-
-CREATE TABLE `harchi`.`page_translation` (
-  `uk` VARCHAR(255) NOT NULL,
-  `en` VARCHAR(255) NOT NULL,
-  `ru` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`uk`, `en`, `ru`));
