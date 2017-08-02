@@ -763,8 +763,15 @@ function page_findnearest($page, $useacl = true){
     global $ID;
 
     $ns = $ID;
+    $first = true;
     do {
-        $ns = getNS($ns);
+        // when start page is hidden our start page is 1 namespace lower with the same name of the namespace
+        if ($first && $GLOBALS['conf']['hidestart']) {
+            $first = false;
+        } else {
+            $ns = getNS($ns); // strip 1 ns
+        }
+
         $pageid = cleanID("$ns:$page");
         if(page_exists($pageid) && (!$useacl || auth_quickaclcheck($pageid) >= AUTH_READ)){
             return $pageid;
