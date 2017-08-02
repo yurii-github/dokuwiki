@@ -32,13 +32,6 @@
 /data/meta/*
 /data/pages/*
 /data/tmp/*
-!/data/pages/wiki/dokuwiki.txt
-!/data/pages/wiki/syntax.txt
-!/data/pages/wiki/welcome.txt
-/lib/tpl/*
-!/lib/tpl/dokuwiki
-!/lib/tpl/harchi
-!/lib/tpl/index.php
 lib/images/*/local/*
 
 # composer default ignores
