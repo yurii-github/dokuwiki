@@ -132,14 +132,12 @@ $showSidebar = $hasSidebar && ($ACT=='show');
             (function() {
                 if("HC_LOAD_INIT" in window)return;
                 HC_LOAD_INIT = true;
-                var lang = '<?= $conf['lang'];?>';
                 var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-                hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/91700/"+lang+"/widget.js";
+                hcc.src = "//w.hypercomments.com/widget/hc/91700/<?= $conf['lang'];?>/widget.js";
                 var s = document.getElementsByTagName("script")[0];
                 s.parentNode.insertBefore(hcc, s.nextSibling);
             })();
         </script>
-        <a href="http://hypercomments.com" class="hc-link" title="comments widget">comments powered by HyperComments</a>
         <?php endif; ?>
         <?php include('tpl_footer.php') ?>
     </div></div><!-- /site -->
