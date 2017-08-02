@@ -92,15 +92,21 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                 <div class="tools">
                     <ul>
                         <?php
+
+                        $admin = [];
+                            $GLOBALS['USERINFO']['uid'] == 1 ?
+                                $admin = [
+                                    'edit'  => tpl_action('edit', true, 'li', true, '<span>', '</span>'),
+                                    'revert' => tpl_action('revert', true, 'li', true, '<span>', '</span>'),
+                                    'revisions' => tpl_action('revisions', true, 'li', true, '<span>', '</span>'),
+                                    'subscribe' => tpl_action('subscribe', true, 'li', true, '<span>', '</span>'),
+                                ] : [];
+
                             $data = array(
                                 'view'  => 'main',
-                                'items' => array(
-                                    'edit'      => tpl_action('edit',      true, 'li', true, '<span>', '</span>'),
-                                    'revert'    => tpl_action('revert',    true, 'li', true, '<span>', '</span>'),
-                                    'revisions' => tpl_action('revisions', true, 'li', true, '<span>', '</span>'),
+                                'items' =>  $admin + array(
                                     'backlink'  => tpl_action('backlink',  true, 'li', true, '<span>', '</span>'),
-                                    'subscribe' => tpl_action('subscribe', true, 'li', true, '<span>', '</span>'),
-                                    'top'       => tpl_action('top',       true, 'li', true, '<span>', '</span>')
+                                    'top' => tpl_action('top',  true, 'li', true, '<span>', '</span>')
                                 )
                             );
 
