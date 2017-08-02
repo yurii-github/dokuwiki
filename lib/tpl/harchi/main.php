@@ -24,6 +24,14 @@ $showSidebar = $hasSidebar && ($ACT=='show');
     <link rel="icon" type="image/png" href="<?= tpl_getMediaFile(['assets/mortar.png'])?>">
     <?php tpl_includeFile('meta.html') ?>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1647951743023830",
+            enable_page_level_ads: true
+        });
+    </script>
 </head>
 
 <body>
