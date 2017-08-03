@@ -62,10 +62,11 @@ class action_plugin_swiftmail extends \DokuWiki_Action_Plugin {
             $message = (new Swift_Message('Wonderful Subject'))
                 ->setSubject($event->data['subject'])
                 ->setFrom($event->data['from'])
+                ->setTo($event->data['to'])
                 ->setCc($event->data['cc'])
                 ->setBcc($event->data['bcc'])
-                ->setTo($event->data['to'])
-                ->setBody($dokuMailer->getText(), 'text/plain');
+                ->setBody($dokuMailer->getText(), 'text/plain')
+                ->setCharset('UTF-8');
 
             if ($GLOBALS['conf']['htmlmail']) {
                 $message->addPart($dokuMailer->getHTML(), 'text/html');
@@ -75,11 +76,11 @@ class action_plugin_swiftmail extends \DokuWiki_Action_Plugin {
             $result = (bool)$count;
         }
         catch (Exception $e) {
-            msg('There was an unexpected problem communicating with SMTP: '.$e->getMessage(), -1);
+            msg('There was an unexpected problem communicating with SMTP', -1);
         }
         finally {
             if ($this->getConf('debug')) {
-                msg("Logger DUMP:\n".str_replace("\n",'<br>',$logger->dump()), ($count > 0 ? 0 : -1));
+                msg(str_replace("\n",'<br>',$logger->dump()), ($count > 0 ? 0 : -1));
             }
         }
 
