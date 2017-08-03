@@ -26,8 +26,6 @@ class action_plugin_swiftmail extends \DokuWiki_Action_Plugin {
      */
     public function register(\Doku_Event_Handler $controller){
         $controller->register_hook('MAIL_MESSAGE_SEND', 'BEFORE', $this, 'eventMailMessageSend');
-
-       // dbg('zzzzzzzzzz');
     }
 
     /**
@@ -60,17 +58,21 @@ class action_plugin_swiftmail extends \DokuWiki_Action_Plugin {
 
         //send
         try {
+            // multipart/alternative | text/html | 'text/plain'
             $message = (new Swift_Message('Wonderful Subject'))
                 ->setSubject($event->data['subject'])
                 ->setFrom($event->data['from'])
-                ->setCc($event->data['cc'])->setBcc($event->data['bcc'])
+                ->setCc($event->data['cc'])
+                ->setBcc($event->data['bcc'])
                 ->setTo($event->data['to'])
-                ->setBody($event->data['body'], $GLOBALS['conf']['htmlmail'] ? 'text/html' : 'text/plain');
-            // TODO: optionally an alternative body
-            // $message->addPart($html, 'text/html');
+                ->setBody($dokuMailer->getText(), 'text/plain');
+
+            if ($GLOBALS['conf']['htmlmail']) {
+                $message->addPart($dokuMailer->getHTML(), 'text/html');
+            }
+
             $count = $mailer->send($message);
             $result = (bool)$count;
-            //dbg($event->data);
         }
         catch (Exception $e) {
             msg('There was an unexpected problem communicating with SMTP: '.$e->getMessage(), -1);
