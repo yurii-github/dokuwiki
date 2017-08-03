@@ -76,6 +76,9 @@ class action_plugin_swiftmail extends \DokuWiki_Action_Plugin {
         }
         catch (Exception $e) {
             msg('There was an unexpected problem communicating with SMTP', -1);
+            if ($this->getConf('debug')) {
+                msg("Execption: \n".$e->getMessage(), -1);
+            }
         }
         finally {
             if ($this->getConf('debug')) {
