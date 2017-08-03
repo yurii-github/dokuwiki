@@ -41,3 +41,4 @@ composer.phar
 
 /Yurii/var
 /Yurii/config/config.yaml
+/Yurii/config-from-prod
