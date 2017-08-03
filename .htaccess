@@ -18,6 +18,7 @@ Options -Indexes -MultiViews +FollowSymLinks
 ## Don't allow access to git directories
 <IfModule alias_module>
     RedirectMatch 404 /\.git
+    RedirectMatch 404 /error_log
 </IfModule>
 
 ## Uncomment these rules if you want to have nice URLs using
