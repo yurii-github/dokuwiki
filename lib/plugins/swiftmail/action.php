@@ -41,7 +41,7 @@ class action_plugin_swiftmail extends \DokuWiki_Action_Plugin {
         // setup event
         $event->preventDefault();
         $event->stopPropagation();
-        $result = false;
+        $count = 0;
 
         // setup true mailer
         $transport = (new Swift_SmtpTransport($this->getConf('smtp_host'), $this->getConf('smtp_port'), $this->getConf('smtp_ssl')))
@@ -73,21 +73,19 @@ class action_plugin_swiftmail extends \DokuWiki_Action_Plugin {
             }
 
             $count = $mailer->send($message);
-            $result = (bool)$count;
         }
         catch (Exception $e) {
             msg('There was an unexpected problem communicating with SMTP', -1);
         }
         finally {
             if ($this->getConf('debug')) {
-                msg(str_replace("\n",'<br>',$logger->dump()), ($count > 0 ? 0 : -1));
+                msg(str_replace("\n",'<br>', $logger->dump()), ($count > 0 ? 0 : -1));
             }
         }
 
-
+        //TODO: batch mail support
         //TODO: Sendmail $transport = new Swift_SendmailTransport('/usr/sbin/sendmail -bs');*/
-
-        $event->result = $result;
-        $event->data['success'] = $result;
+        $event->result = (bool)$count;;
+        $event->data['success'] = (bool)$count;;
     }
 }
