@@ -29,7 +29,7 @@ class action_plugin_yk_i18n extends \DokuWiki_Action_Plugin
         // set dokuwiki globals, etc
         $event->data = $lang;
         $GLOBALS['conf']['lang'] = $lang;
-        if ($_SESSION[DOKU_COOKIE]['yk_1i8n_lang'] != $lang) {
+        if (!empty($_SESSION[DOKU_COOKIE]['yk_1i8n_lang']) && $_SESSION[DOKU_COOKIE]['yk_1i8n_lang'] != $lang) {
             $_SESSION[DOKU_COOKIE]['yk_1i8n_lang'] = $lang;
         }
 
