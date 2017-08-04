@@ -72,6 +72,16 @@ $editDate = function () use (&$INFO, &$lang) {
                         </div>
                         <div class="docInfo"><?= $editDate(); ?></div>
                         <?php tpl_flush() ?>
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- Page TOP -->
+                        <ins class="adsbygoogle"
+                             style="display:block; margin-bottom: 1rem"
+                             data-ad-client="ca-pub-1647951743023830"
+                             data-ad-slot="1745999970"
+                             data-ad-format="auto"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
 
                         <?php if ($ACT=='show'): ?>
                             <div id="hypercomments_widget"></div>
