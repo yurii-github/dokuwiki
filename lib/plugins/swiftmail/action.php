@@ -22,6 +22,28 @@ class action_plugin_swiftmail extends \DokuWiki_Action_Plugin {
     }
 
     /**
+     *
+     * NOTE! temporary fix
+     * @param string $address
+     * @return array
+     */
+    static public function dwAddressFix($address) {
+        preg_match_all('/(.*?)<(.*?)>/', $address, $matches); // name <asd@asd.asd>, name2 <asd@asd.asd> ...
+        $output = [];
+        for ($i=0; $i<count($matches[0]); $i++) {
+            // address => name
+            $output[$matches[2][$i]] = $matches[1][$i];
+        }
+
+        if (empty($output)) {
+            return $address;
+        }
+
+        return $output;
+    }
+
+
+    /**
      * @param Doku_Event_Handler $controller
      */
     public function register(\Doku_Event_Handler $controller){
@@ -61,12 +83,15 @@ class action_plugin_swiftmail extends \DokuWiki_Action_Plugin {
             // multipart/alternative | text/html | 'text/plain'
             $message = (new Swift_Message('Wonderful Subject'))
                 ->setSubject($event->data['subject'])
-                ->setFrom($event->data['from'])
-                ->setTo($event->data['to'])
-                ->setCc($event->data['cc'])
-                ->setBcc($event->data['bcc'])
                 ->setBody($dokuMailer->getText(), 'text/plain')
                 ->setCharset('UTF-8');
+
+            //TODO: no more dw fix!
+            foreach (['from','to','cc','bcc'] as $path) {
+                $setter = 'set'.ucfirst($path);
+                $ad = self::dwAddressFix($event->data[$path]);
+                $message->$setter($ad);
+            }
 
             if ($GLOBALS['conf']['htmlmail']) {
                 $message->addPart($dokuMailer->getHTML(), 'text/html');
