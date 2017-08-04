@@ -15,7 +15,8 @@
         "aziraphale/email-address-validator": "^2",
         "doctrine/orm": "^2.5",
         "symfony/yaml": "^3.3",
-        "swiftmailer/swiftmailer": "^6.0"
+        "swiftmailer/swiftmailer": "^6.0",
+        "monolog/monolog": "^1.23"
     },
     "suggest": {
         "squizlabs/php_codesniffer": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",

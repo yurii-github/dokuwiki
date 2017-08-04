@@ -35,7 +35,7 @@ class action_plugin_swiftmail extends \DokuWiki_Action_Plugin {
     public function eventMailMessageSend(\Doku_Event $event, $args) {
         /** @var Mailer $dokuMailer Our Mailer with all the data */
         //TODO: replace dokuwiki mailer and stuff
-        $dokuMailer =& $event->data['mail'];
+        $dokuMailer = $event->data['mail'];
         $dokuMailer->dump();
 
         // setup event
