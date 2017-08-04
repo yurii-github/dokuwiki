@@ -26,6 +26,9 @@ Options -Indexes -MultiViews +FollowSymLinks
 ## Uncomment these rules if you want to have nice URLs using
 ## $conf['userewrite'] = 1 - not needed for rewrite mode 2
 RewriteEngine on
+# force https
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 #
 RewriteRule ^_media/(.*)              lib/exe/fetch.php?media=$1  [QSA,L]
 RewriteRule ^_detail/(.*)             lib/exe/detail.php?media=$1  [QSA,L]
