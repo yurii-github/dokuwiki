@@ -8,7 +8,7 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-class admin_plugin_swiftmail extends DokuWiki_Admin_Plugin {
+class admin_plugin_yk_mailtest extends DokuWiki_Admin_Plugin {
 
     /**
      * return sort order for position in admin menu
@@ -26,17 +26,14 @@ class admin_plugin_swiftmail extends DokuWiki_Admin_Plugin {
         if(!$INPUT->bool('send')) return;
 
         // make sure debugging is on;
-        $conf['plugin']['swiftmail']['debug'] = 1;
+        /** @var \dokuwiki\Service\MailManager $manager */
+        $manager =$GLOBALS['dwContainer']->get('mail.manager');
+        $msg = $manager->createMessage('SwiftMail Plugin says hello', null, null, "Hi @USER@\n\nThis is a (<b>bold</b>) test from @DOKUWIKIURL@");
+        if($INPUT->str('to')) $msg->setTo($INPUT->str('to'));
+        if($INPUT->str('cc')) $msg->setCc($INPUT->str('cc'));
+        if($INPUT->str('bcc')) $msg->setBcc($INPUT->str('bcc'));
 
-        // send a mail
-        $mail = new Mailer();
-        if($INPUT->str('to')) $mail->to($INPUT->str('to'));
-        if($INPUT->str('cc')) $mail->cc($INPUT->str('cc'));
-        if($INPUT->str('bcc')) $mail->bcc($INPUT->str('bcc'));
-        $mail->subject('SwiftMail Plugin says hello');
-        $mail->setBody("Hi @USER@\n\nThis is a (<b>bold</b>) test from @DOKUWIKIURL@");
-
-        $ok = $mail->send();
+        $ok = $manager->send($msg);
 
         // check result
         if($ok){
