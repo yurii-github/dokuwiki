@@ -66,6 +66,19 @@ $lang['dmode']       = 'Directory creation mode';
 $lang['fmode']       = 'File creation mode';
 $lang['allowdebug']  = 'Allow debug. <b>Disable if not needed!</b>';
 
+$lang['_mailer'] = 'Mailer';
+$lang['mailer____transport'] = 'Mail Transport';
+$lang['mailer____smtp_security'] = 'What kind of encryption is used when communicating with your SMTP Server?';
+$lang['mailer____smtp_security_o_']      = '';
+$lang['mailer____smtp_security_o_SSL']   = 'SSL';
+$lang['mailer____smtp_security_o_TLS']   = 'TLS';
+$lang['mailer____smtp_host'] = 'Your outgoing SMTP server.';
+$lang['mailer____smtp_port'] = 'The port your SMTP server listens on. Usually 25. 465 for SSL.';
+$lang['mailer____smtp_user'] = 'If authentication is required, put your user name here.';
+$lang['mailer____smtp_password'] = 'Password for the above user.';
+$lang['mailer____smtp_localdomain'] = 'The name to be used during HELO phase of SMTP. Should be the FQDN of the webserver DokuWiki is running on. Leave empty for autodetection.';
+
+
 /* Display Settings */
 $lang['recent']      = 'Number of entries per page in the recent changes';
 $lang['recent_days'] = 'How many recent changes to keep (days)';

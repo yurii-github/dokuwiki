@@ -1,8 +1,0 @@
-base    swiftmail
-author  Andreas Gohr, Yurii K.
-email   yurii-github@users.noreply.github.com
-date    2016-02-03 - 2017-08-03
-name    SwiftMailer Plugin
-desc    Use SwiftMailer for sending mails
-url     http://www.dokuwiki.org/plugin:swiftmail
-
