@@ -52,4 +52,10 @@ class AppKernel extends Kernel
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
+
+
+    public function getProjectDir()
+    {
+        return dirname(__DIR__); // fix subpathing.. Frankenstein is alive!
+    }
 }

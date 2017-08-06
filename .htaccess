@@ -22,6 +22,7 @@ Options -Indexes -MultiViews +FollowSymLinks
     RedirectMatch 404 /composer.json
     RedirectMatch 404 /composer.lock
     RedirectMatch 404 /symfony-app
+    RedirectMatch 404 /sfconsole.sh
 </IfModule>
 
 ## Uncomment these rules if you want to have nice URLs using
