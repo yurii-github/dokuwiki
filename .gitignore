@@ -42,3 +42,24 @@ composer.phar
 /Yurii/var
 /Yurii/config/config.yaml
 /Yurii/config-from-prod
+
+#
+# symfony Frankenstein
+#
+/symfony-app/.web-server-pid
+/symfony-app/app/config/parameters.yml
+/symfony-app/build/
+/symfony-app/phpunit.xml
+/symfony-app/var/*
+!/symfony-app/var/cache
+/symfony-app/var/cache/*
+!/symfony-app/var/cache/.gitkeep
+!/symfony-app/var/logs
+/symfony-app/var/logs/*
+!/symfony-app/var/logs/.gitkeep
+!/symfony-app/var/sessions
+/symfony-app/var/sessions/*
+!/symfony-app/var/sessions/.gitkeep
+!/symfony-app/var/SymfonyRequirements.php
+/symfony-app/vendor/
+/symfony-app/web/bundles/

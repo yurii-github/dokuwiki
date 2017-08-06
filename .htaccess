@@ -19,8 +19,9 @@ Options -Indexes -MultiViews +FollowSymLinks
 <IfModule alias_module>
     RedirectMatch 404 /\.git
     RedirectMatch 404 /error_log
-    RedirectMatch 404 /composer.json$
-    RedirectMatch 404 /composer.lock$
+    RedirectMatch 404 /composer.json
+    RedirectMatch 404 /composer.lock
+    RedirectMatch 404 /symfony-app
 </IfModule>
 
 ## Uncomment these rules if you want to have nice URLs using
