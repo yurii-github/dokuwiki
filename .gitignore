@@ -62,5 +62,4 @@ phpunit.phar
 /symfony-app/var/sessions/*
 !/symfony-app/var/sessions/.gitkeep
 !/symfony-app/var/SymfonyRequirements.php
-/symfony-app/vendor/
 /symfony-app/web/bundles/

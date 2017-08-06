@@ -23,7 +23,8 @@
     "symfony/monolog-bundle": "^3.1",
     "symfony/swiftmailer-bundle": "^3.0",
     "symfony/symfony": "^3.3",
-    "symfony/yaml": "^3.3"
+    "symfony/yaml": "^3.3",
+    "sensio/generator-bundle": "^3.0"
   },
   "suggest": {
     "squizlabs/php_codesniffer": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
@@ -51,7 +52,6 @@
   "prefer-stable": true,
   "require-dev": {
     "mikey179/vfsStream": "^1.6",
-    "sensio/generator-bundle": "^3.0",
     "symfony/phpunit-bridge": "^3.0"
   },
 
