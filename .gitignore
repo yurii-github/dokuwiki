@@ -36,6 +36,7 @@ lib/images/*/local/*
 
 # composer default ignores
 composer.phar
+phpunit.phar
 /vendor
 !/vendor/.htaccess
 
