@@ -147,8 +147,6 @@ $editDate = function () use (&$INFO, &$lang) {
                     <?php  tpl_link(wl('ліцензії'),'<img width="15" height="15" src="'.tpl_getMediaFile(['assets/zero.svg']).'"  alt="ліцензії" /> Ліцензії'); ?>
                     |
                     <?php  tpl_link(wl('джерела'),'Джерела'); ?>
-                     |
-                    <a target="_blank" href="https://nic.ua/ru/signup/jbduuyeq">Хостинг від NIC.UA<sup>-10%</sup></a>
                 </div>
             </div>
         </div>
