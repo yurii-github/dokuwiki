@@ -38,12 +38,7 @@ if (!defined('DOKU_INC')) die();
                             tpl_userinfo(); /* 'Logged in as ...' */
                             echo '</li>';
                         }
-                        tpl_toolsevent('usertools', array(
-                            tpl_action('admin', true, 'li', true),
-                            tpl_action('profile', true, 'li', true),
-                            tpl_action('register', true, 'li', true),
-                            tpl_action('login', true, 'li', true)
-                        ));
+                        echo (new \dokuwiki\Menu\UserMenu())->getListItems('action ');
                     ?>
                 </ul>
             </div>
@@ -53,22 +48,14 @@ if (!defined('DOKU_INC')) die();
         <div id="dokuwiki__sitetools">
             <h3 class="a11y"><?php echo $lang['site_tools']; ?></h3>
             <?php tpl_searchform(); ?>
-
-
-            <!--
             <div class="mobileTools">
-                <?php tpl_actiondropdown($lang['tools']); ?>
+                <?php echo (new \dokuwiki\Menu\MobileMenu())->getDropdown($lang['tools']); ?>
             </div>
             <ul>
-                <?php
-                    tpl_toolsevent('sitetools', array(
-                        tpl_action('recent', true, 'li', true),
-                        tpl_action('media', true, 'li', true),
-                        tpl_action('index', true, 'li', true)
-                    ));
-                ?>
-            </ul>-->
+                <?php echo (new \dokuwiki\Menu\SiteMenu())->getListItems('action ', false); ?>
+            </ul>
         </div>
+
     </div>
 
     <!-- BREADCRUMBS -->
