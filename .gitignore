@@ -35,6 +35,7 @@
 lib/images/*/local/*
 
 # composer default ignores
+composer.lock
 composer.phar
 phpunit.phar
 /vendor
